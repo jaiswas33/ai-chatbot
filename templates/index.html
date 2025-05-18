@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Chat</title>
+    <style>
+        body {
+            background-color: #1e1e2f;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background-color: #2e2e42;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            color: #00adb5;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        textarea {
+            background-color: #1f1f2e;
+            color: #ffffff;
+            border: 1px solid #555;
+            border-radius: 8px;
+            padding: 15px;
+            resize: none;
+            height: 120px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #00adb5;
+            color: white;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #290099;
+        }
+
+        .chat-box {
+            margin-top: 25px;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 12px;
+            line-height: 1.6;
+            max-width: 80%;
+        }
+
+        .user {
+            background-color: #393e46;
+            align-self: flex-end;
+            text-align: right;
+            margin-left: auto;
+        }
+
+        .bot {
+            background-color: #00adb5;
+            align-self: flex-start;
+            text-align: left;
+            margin-right: auto;
+            color: #fff;
+        }
+
+        .messages {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💬 AIanishka AI ChatBot</h1>
+        <form method="POST">
+            <textarea name="prompt" placeholder="How may I help you today"></textarea>
+            <input type="submit" value="Send">
+        </form>
+
+        {% if response %}
+        <div class="chat-box">
+            <div class="messages">
+                <div class="message user">
+                    {{ request.form.get("prompt") }}
+                </div>
+                <div class="message bot">
+                    {{ response|safe }}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
