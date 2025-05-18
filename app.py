@@ -1,14 +1,12 @@
 import os
 from flask import Flask, render_template, request
 import google.generativeai as genai
-from dotenv import load_dotenv
 
-load_dotenv() 
 
 app = Flask(__name__)
 
 # Configure your API key (set GOOGLE_API_KEY as an environment variable or replace here)
-api_key = os.environ.get("GOOGLE_API_KEY")
+api_key = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=api_key)
 
 
